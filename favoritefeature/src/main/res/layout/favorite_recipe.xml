@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/favorite_recipe_image"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="16dp"
+        android:src="@drawable/test_pic"/>
+
+    <TextView
+        android:id="@+id/favorite_recipe_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/favorite_recipe_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Spaghetti Carbonara Special With Cheese"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:textSize="14sp"
+        android:textColor="@color/blackQuarter"
+        android:fontFamily="@font/poppins_medium"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/favorite_recipe_credit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/favorite_recipe_credit_author_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/favorite_recipe_credit_author_icon"
+        app:layout_constraintBottom_toBottomOf="@id/favorite_recipe_credit_author_icon"
+        android:text="RM Beringin Edy"
+        android:layout_marginStart="8dp"
+        android:textSize="12sp"
+        android:textColor="@color/grayNormal"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins_regular"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <ImageView
+        android:id="@+id/favorite_recipe_credit_author_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toBottomOf="@id/favorite_recipe_title"
+        app:layout_constraintStart_toEndOf="@id/favorite_recipe_image"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        app:tint="@color/grayNormal"
+        android:src="@drawable/ic_author"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/favorite_recipe_remove_button"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/favorite_recipe_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_medium"
+        android:scaleType="centerCrop"
+        android:text="Remove"
+        android:backgroundTint="#EF5350" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

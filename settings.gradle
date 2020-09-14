@@ -1,0 +1,4 @@
+include ':favoritefeature'
+include ':core'
+include ':app'
+rootProject.name = "AnyRecipes"

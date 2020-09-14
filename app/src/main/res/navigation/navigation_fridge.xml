@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_fridge"
+    app:startDestination="@id/fridgeFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/fridgeFragment"
+        android:name="com.endiar.anyrecipes.ui.fridge.FridgeFragment"
+        android:label="fragment_fridge"
+        tools:layout="@layout/fragment_fridge" >
+        <action
+            android:id="@+id/action_fridgeFragment_to_searchResultFragment"
+            app:destination="@id/resultByIngredients" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultByIngredients"
+        android:name="com.endiar.anyrecipes.ui.resultbyingredients.ResultByIngredientsFragment"
+        android:label="ResultByIngredientsFragment"
+        tools:layout="@layout/fragment_search_result">
+        <action
+            android:id="@+id/action_resultByIngredientsFragment_to_detailFragmentInFridge"
+            app:destination="@id/detailFragmentInFridge" />
+        <argument
+            android:name="ingredients"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragmentInFridge"
+        android:name="com.endiar.anyrecipes.ui.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="recipeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+</navigation>

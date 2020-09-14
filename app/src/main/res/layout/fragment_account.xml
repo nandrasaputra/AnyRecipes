@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_account_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/redRuby">
+
+        <TextView
+            android:id="@+id/fragment_account_toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Account"
+            android:textColor="@color/whitePure"
+            android:fontFamily="@font/poppins_medium" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/fragment_account_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/fragment_account_toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/fragment_account_profile_picture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:src="@drawable/prof_pict"
+                />
+
+            <TextView
+                android:id="@+id/fragment_account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/fragment_account_profile_picture"
+                app:layout_constraintTop_toTopOf="@id/fragment_account_profile_picture"
+                app:layout_constraintBottom_toTopOf="@id/fragment_account_email"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:textSize="16sp"
+                android:textColor="@color/blackQuarter"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Nandra Saputra"/>
+
+            <TextView
+                android:id="@+id/fragment_account_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/fragment_account_profile_picture"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_account_profile_picture"
+                app:layout_constraintTop_toBottomOf="@id/fragment_account_name"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:textSize="14sp"
+                android:textColor="@color/grayNormal"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:fontFamily="@font/poppins_medium"
+                android:text="nandra.saputras@gmail.com"/>
+
+            <ImageView
+                android:id="@+id/fragment_account_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@id/fragment_account_profile_picture"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp"
+                android:src="@color/grayObscure"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/fragment_account_credits_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_account_divider"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Credits:"
+                android:textColor="@color/blackQuarter"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/fragment_account_spoonacular_image"
+                android:layout_width="280dp"
+                android:layout_height="100dp"
+                app:layout_constraintTop_toBottomOf="@id/fragment_account_credits_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                app:riv_corner_radius="8dp"
+                android:src="@drawable/spoonacular" />
+
+            <TextView
+                android:id="@+id/fragment_account_credit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fragment_account_spoonacular_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/blackQuarter"
+                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
+                android:text="All recipe data from this app is belong to Spoonacular API"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/fake_shadow"
+        android:id="@+id/fragment_account_fake_shadow"
+        android:layout_height="3dp"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_favorite"
+    app:startDestination="@id/favoriteFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.endiar.anyrecipes.favoritefeature.ui.FavoriteFragment"
+        app:moduleName="favoritefeature"
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragmentInFavorite"
+            app:destination="@id/detailFragmentInFavorite" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragmentInFavorite"
+        android:name="com.endiar.anyrecipes.ui.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="recipeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+</navigation>

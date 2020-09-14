@@ -1,0 +1,36 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+
+        <!-- Change menu dot color for this case -->
+        <item name="android:textColorSecondary">@color/whitePure</item>
+
+        <!-- Change bottom nav styling -->
+        <item name="bottomNavigationStyle">@style/AnyRecipes.BottomNavStyle</item>
+    </style>
+
+
+    <style name="AnyRecipes.BottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <!-- Change active icon/text label color -->
+        <item name="colorPrimary">@color/redRuby</item>
+    </style>
+
+    <style name="AnyRecipes.Checkbox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="materialThemeOverlay">@style/CheckboxMaterialThemeOverlay</item>
+    </style>
+
+    <style name="CheckboxMaterialThemeOverlay" parent="">
+        <item name="colorOnSurface">#566095</item>
+        <item name="colorAccent">#3F51B5</item>
+    </style>
+
+</resources>

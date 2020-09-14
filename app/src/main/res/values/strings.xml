@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AnyRecipes</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_fridge">Fridge</string>
+    <string name="title_account">Account</string>
+    <string name="title_favoritefeature">Favorite Feature</string>
+</resources>
