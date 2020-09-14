@@ -14,7 +14,7 @@ buildscript {
         rounded_image_version = "2.3.0"
         activity_ktx_version = "1.1.0"
         fragment_ktx_version = '1.2.5'
-        ext.koin_version = "2.1.5"
+        koin_version = "2.1.5"
     }
 
     repositories {
