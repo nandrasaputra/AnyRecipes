@@ -15,6 +15,7 @@ buildscript {
         activity_ktx_version = "1.1.0"
         fragment_ktx_version = '1.2.5'
         koin_version = "2.1.5"
+        lottie_version = "3.4.1"
     }
 
     repositories {

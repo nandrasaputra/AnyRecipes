@@ -3,4 +3,5 @@
     <string name="favorite_recipe_remove_button_text">Remove</string>
     <string name="fragment_favorite_toolbar_title_text">Favorite Recipes</string>
     <string name="author_icon">author icon</string>
+    <string name="fragment_favorite_lottie_text">The list is empty, let\'s start add some!</string>
 </resources>

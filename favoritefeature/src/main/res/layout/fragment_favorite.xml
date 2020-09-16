@@ -35,6 +35,47 @@
         app:layout_constraintTop_toBottomOf="@id/fragment_favorite_toolbar"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_favorite_lottie_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/fragment_favorite_toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/fragment_favorite_lottie_image"
+            android:layout_width="156dp"
+            android:layout_height="156dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_favorite_lottie_text"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginBottom="16dp"
+            app:lottie_rawRes="@raw/empty_lottie"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <TextView
+            android:id="@+id/fragment_favorite_lottie_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fragment_favorite_lottie_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/fragment_favorite_lottie_text"
+            android:textSize="14sp"
+            android:layout_marginBottom="56dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/blackQuarter"
+            android:gravity="center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <include layout="@layout/fake_shadow"
         android:id="@+id/fragment_favorite_fake_shadow"
         android:layout_height="3dp"
