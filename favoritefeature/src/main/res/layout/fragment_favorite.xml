@@ -15,12 +15,12 @@
         android:background="@color/redRuby">
 
         <TextView
-            android:id="@+id/fragment_chat_toolbar_title"
+            android:id="@+id/fragment_favorite_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:text="Favorite Recipes"
+            android:text="@string/fragment_favorite_toolbar_title_text"
             android:textColor="@color/whitePure"
             android:fontFamily="@font/poppins_medium" />
 

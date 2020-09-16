@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="Search Result"
+            android:text="@string/fragment_search_result_toolbar_title_text"
             android:textColor="@color/whitePure"
             android:fontFamily="@font/poppins_medium" />
 

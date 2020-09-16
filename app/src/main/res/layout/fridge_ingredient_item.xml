@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fridge_ingredient_item_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/fridge_rounded_border"/>
+        android:src="@drawable/fridge_rounded_border"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/fridge_ingredient_item_image"
@@ -26,7 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_ingredient_beef" />
+        android:src="@drawable/ic_ingredient_beef"
+        android:contentDescription="@string/ingredient_image" />
 
     <TextView
         android:id="@+id/fridge_ingredient_item_title"
@@ -38,7 +41,7 @@
         android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textColor="@color/blackQuarter"
-        android:text="Beef"
+        tools:text="Beef"
         android:maxLines="1"
         android:ellipsize="end"
         android:fontFamily="@font/poppins_medium"

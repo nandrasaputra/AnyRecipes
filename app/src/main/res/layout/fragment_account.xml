@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="Account"
+            android:text="@string/fragment_account_toolbar_title_text"
             android:textColor="@color/whitePure"
             android:fontFamily="@font/poppins_medium" />
 
@@ -47,7 +47,7 @@
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:src="@drawable/prof_pict"
-                />
+                android:contentDescription="@string/profile_picture" />
 
             <TextView
                 android:id="@+id/fragment_account_name"
@@ -62,7 +62,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/blackQuarter"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Nandra Saputra"/>
+                android:text="@string/fragment_account_name_text"/>
 
             <TextView
                 android:id="@+id/fragment_account_email"
@@ -77,7 +77,7 @@
                 android:textColor="@color/grayNormal"
                 app:layout_constraintVertical_chainStyle="packed"
                 android:fontFamily="@font/poppins_medium"
-                android:text="nandra.saputras@gmail.com"/>
+                android:text="@string/fragment_account_email_text"/>
 
             <ImageView
                 android:id="@+id/fragment_account_divider"
@@ -101,10 +101,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Credits:"
+                android:text="@string/fragment_account_credit_title_text"
                 android:textColor="@color/blackQuarter"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/fragment_account_spoonacular_image"
@@ -131,7 +130,7 @@
                 android:textColor="@color/blackQuarter"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:text="All recipe data from this app is belong to Spoonacular API"/>
+                android:text="@string/fragment_account_credit_spoonacular_text"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

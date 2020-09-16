@@ -34,9 +34,8 @@
         android:textSize="16sp"
         android:textColor="@color/blackQuarter"
         android:textAlignment="center"
-        android:text="Search recipe based on ingredient that you have on your fridge."
-        android:fontFamily="@font/poppins_medium"
-        tools:ignore="HardcodedText" />
+        android:text="@string/fridge_menu_header_description_text"
+        android:fontFamily="@font/poppins_medium" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -61,8 +60,7 @@
         android:textSize="16sp"
         android:textColor="@color/blackQuarter"
         android:layout_marginTop="56dp"
-        android:text="Pick Ingredients:"
-        android:fontFamily="@font/poppins_medium"
-        tools:ignore="HardcodedText" />
+        android:text="@string/fridge_menu_header_title_text"
+        android:fontFamily="@font/poppins_medium" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
