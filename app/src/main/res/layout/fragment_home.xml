@@ -39,7 +39,8 @@
         app:layout_constraintTop_toBottomOf="@id/fragment_home_toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
     <include layout="@layout/fake_shadow"
         android:id="@+id/fragment_home_fake_shadow"
@@ -48,13 +49,50 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <ProgressBar
-        android:id="@+id/fragment_home_progress_bar"
+    
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/fragment_home_shimmer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
+        android:layout_height="0dp"
+        app:shimmer_auto_start="true"
         app:layout_constraintTop_toBottomOf="@id/fragment_home_toolbar"
-        android:visibility="gone"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/recipes_item_shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+                <include layout="@layout/recipes_item_shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+                <include layout="@layout/recipes_item_shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

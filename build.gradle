@@ -16,6 +16,7 @@ buildscript {
         fragment_ktx_version = '1.2.5'
         koin_version = "2.1.5"
         lottie_version = "3.4.1"
+        shimmer_version = "0.5.0"
     }
 
     repositories {

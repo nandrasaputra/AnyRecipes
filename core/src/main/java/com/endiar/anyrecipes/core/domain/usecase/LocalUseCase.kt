@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalUseCase {
 
-    fun setFavoriteRecipeGist(recipe: RecipeFull)
+    suspend fun setFavoriteRecipeGist(recipe: RecipeFull)
 
-    fun removeFavoriteRecipeGist(recipeId: Int)
+    suspend fun removeFavoriteRecipeGist(recipeId: Int)
 
     fun getFavoriteRecipeGistList(): Flow<List<FavoriteRecipe>>
 

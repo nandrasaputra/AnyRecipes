@@ -36,14 +36,14 @@ class ResultByIngredientsFragment: Fragment() {
                 if (resource != null) {
                     when (resource) {
                         is Resource.Loading -> {
-                            fragment_search_progress_bar.visibility = View.VISIBLE
+                            fragment_search_shimmer_Layout.visibility = View.VISIBLE
                         }
                         is Resource.Success -> {
-                            fragment_search_progress_bar.visibility = View.GONE
+                            fragment_search_shimmer_Layout.visibility = View.GONE
                             resultByIngredientRecipeAdapter.submitList(resource.data)
                         }
                         is Resource.Error -> {
-                            fragment_search_progress_bar.visibility = View.GONE
+                            fragment_search_shimmer_Layout.visibility = View.GONE
                             Toast.makeText(
                                 requireContext(),
                                 "${resource.message}",

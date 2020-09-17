@@ -17,8 +17,8 @@ interface IAnyRepository {
 
     // For DetailFragment
     fun getRecipeFull(id: Int): Flow<Resource<RecipeFull>>
-    fun setFavoriteRecipe(recipe: RecipeFull)
-    fun removeFavoriteRecipe(recipeId: Int)
+    suspend fun setFavoriteRecipe(recipe: RecipeFull)
+    suspend fun removeFavoriteRecipe(recipeId: Int)
     fun checkRecipeOnFavorite(id: Int): Flow<Boolean>
 
     // For FavoriteFragment

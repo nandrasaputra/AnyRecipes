@@ -1,7 +1,6 @@
 package com.endiar.anyrecipes.core.di
 
 import androidx.room.Room
-import com.endiar.anyrecipes.core.BuildConfig
 import com.endiar.anyrecipes.core.R
 import com.endiar.anyrecipes.core.data.AnyRecipeRepository
 import com.endiar.anyrecipes.core.data.source.local.LocalDataSource
@@ -9,7 +8,6 @@ import com.endiar.anyrecipes.core.data.source.local.room.AnyRecipeDatabase
 import com.endiar.anyrecipes.core.data.source.remote.RemoteDataSource
 import com.endiar.anyrecipes.core.data.source.remote.network.SpoonacularApiService
 import com.endiar.anyrecipes.core.domain.repository.IAnyRepository
-import com.endiar.anyrecipes.core.utils.AppExecutors
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -65,6 +63,5 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<IAnyRepository> { AnyRecipeRepository(get(), get(), get()) }
+    single<IAnyRepository> { AnyRecipeRepository(get(), get()) }
 }

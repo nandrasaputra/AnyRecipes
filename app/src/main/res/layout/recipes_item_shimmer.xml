@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/recipes_item_dish_image_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="W, 2:3"
+        app:riv_corner_radius="16dp"
+        android:src="@color/shimmerColorOne"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/recipes_item_dish_name_shimmer"
+        android:layout_width="256dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/rounded_rectangle_8dp_background"
+        app:layout_constraintBottom_toTopOf="@id/recipes_item_like_count_image_shimmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/shimmerColorThree"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/recipes_item_like_count_image_shimmer"
+        android:layout_width="56dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/rounded_rectangle_8dp_background"
+        app:tint="@color/shimmerColorTwo"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/recipes_item_time_count_image_shimmer"
+        android:layout_width="56dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/recipes_item_like_count_image_shimmer"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/rounded_rectangle_8dp_background"
+        app:tint="@color/shimmerColorTwo"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/recipes_item_author_icon_shimmer"
+        android:layout_width="128dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/rounded_rectangle_8dp_background"
+        app:tint="@color/shimmerColorTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

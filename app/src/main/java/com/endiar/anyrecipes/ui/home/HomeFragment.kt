@@ -62,14 +62,17 @@ class HomeFragment : Fragment() {
             if (resource != null) {
                 when (resource) {
                     is Resource.Loading -> {
-                        fragment_home_progress_bar.visibility = View.VISIBLE
+                        fragment_home_recycle_view.visibility = View.GONE
+                        fragment_home_shimmer_layout.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        fragment_home_progress_bar.visibility = View.GONE
+                        fragment_home_shimmer_layout.visibility = View.GONE
+                        fragment_home_recycle_view.visibility = View.VISIBLE
                         homeHomeRecipeAdapter.submitList(resource.data)
                     }
                     is Resource.Error -> {
-                        fragment_home_progress_bar.visibility = View.GONE
+                        fragment_home_shimmer_layout.visibility = View.GONE
+                        fragment_home_recycle_view.visibility = View.GONE
                         Toast.makeText(requireContext(), "${resource.message}", Toast.LENGTH_SHORT).show()
                     }
                 }

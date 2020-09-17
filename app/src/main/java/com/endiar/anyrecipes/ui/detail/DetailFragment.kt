@@ -30,20 +30,20 @@ class DetailFragment : Fragment() {
     }
 
     private fun observeData() {
-        detailViewModel.detailRemoteDataMediatorLiveData.observe( viewLifecycleOwner) { resource ->
+        detailViewModel.detailRemoteDataMediatorLiveData.observe(viewLifecycleOwner) { resource ->
             if (resource != null) {
                 when (resource) {
                     is Resource.Loading -> {
-                        fragment_detail_progress_bar.visibility = View.VISIBLE
+                        fragment_detail_shimmer_layout.visibility = View.VISIBLE
                         fragment_detail_scroll_view.visibility = View.GONE
                     }
                     is Resource.Success -> {
                         bindRemoteData(resource.data)
-                        fragment_detail_progress_bar.visibility = View.GONE
+                        fragment_detail_shimmer_layout.visibility = View.GONE
                         fragment_detail_scroll_view.visibility = View.VISIBLE
                     }
                     is Resource.Error -> {
-                        fragment_detail_progress_bar.visibility = View.GONE
+                        fragment_detail_shimmer_layout.visibility = View.GONE
                         fragment_detail_scroll_view.visibility = View.GONE
                         Toast.makeText(requireContext(), "${resource.message}", Toast.LENGTH_SHORT).show()
                     }
@@ -52,8 +52,8 @@ class DetailFragment : Fragment() {
         }
 
         detailViewModel.detailLocalDataMediatorLiveData.observe(viewLifecycleOwner) { favoriteStatus ->
-                handleLocalData(favoriteStatus)
-            }
+            handleLocalData(favoriteStatus)
+        }
     }
 
     private fun setupView() {
@@ -80,7 +80,13 @@ class DetailFragment : Fragment() {
             fragment_detail_credit_owner.text = creditText
             fragment_detail_like_count_text.text = likeCount
             fragment_detail_time_count_text.text = cookingTime
-            fragment_detail_instruction_desc.text = it.shortInstruction
+
+            if (it.shortInstruction.isNotEmpty()) {
+                fragment_detail_instruction_desc.text = it.shortInstruction
+            } else {
+                val text = "(No Data)"
+                fragment_detail_instruction_desc.text = text
+            }
 
             if (it.dishImageUrl.isNotBlank()) {
                 Glide.with(requireContext())

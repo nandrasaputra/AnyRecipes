@@ -1,13 +1,11 @@
 package com.endiar.anyrecipes.ui.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.endiar.anyrecipes.core.data.Resource
 import com.endiar.anyrecipes.core.domain.model.RecipeFull
 import com.endiar.anyrecipes.core.domain.usecase.LocalUseCase
 import com.endiar.anyrecipes.core.domain.usecase.RemoteUseCase
+import kotlinx.coroutines.launch
 
 class DetailViewModel(
     private val localUseCase: LocalUseCase,
@@ -19,7 +17,6 @@ class DetailViewModel(
     private var currentLocalSource: LiveData<Boolean>? = null
     private var currentFavoriteStatusIsFavorite = false
     private var currentRecipeData: RecipeFull? = null
-    private var isFavoriteFinishLoading = false
 
     val detailRemoteDataMediatorLiveData = MediatorLiveData<Resource<RecipeFull>>()
     val detailLocalDataMediatorLiveData = MediatorLiveData<Boolean>()
@@ -43,16 +40,15 @@ class DetailViewModel(
     }
 
     fun toggleFavorite() {
-        currentRecipeData?.let {
-            if (!isFavoriteFinishLoading) {
-                return
+        viewModelScope.launch {
+            currentRecipeData?.let {
+                if (currentFavoriteStatusIsFavorite) {
+                    localUseCase.removeFavoriteRecipeGist(it.dishId)
+                } else {
+                    localUseCase.setFavoriteRecipeGist(it)
+                }
+                updateFavoriteStatus()
             }
-            if (currentFavoriteStatusIsFavorite) {
-                localUseCase.removeFavoriteRecipeGist(it.dishId)
-            } else {
-                localUseCase.setFavoriteRecipeGist(it)
-            }
-            updateFavoriteStatus()
         }
     }
 
@@ -77,7 +73,6 @@ class DetailViewModel(
                 detailLocalDataMediatorLiveData.value = it
             }
         }
-        isFavoriteFinishLoading = true
     }
 
     private fun updateFavoriteStatus() {
