@@ -8,6 +8,8 @@ import com.endiar.anyrecipes.core.data.source.local.room.AnyRecipeDatabase
 import com.endiar.anyrecipes.core.data.source.remote.RemoteDataSource
 import com.endiar.anyrecipes.core.data.source.remote.network.SpoonacularApiService
 import com.endiar.anyrecipes.core.domain.repository.IAnyRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,10 +22,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<AnyRecipeDatabase>().favoriteRecipeDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("anyrecipe".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             AnyRecipeDatabase::class.java, "AnyRecipe.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
