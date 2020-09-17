@@ -10,6 +10,7 @@ import com.endiar.anyrecipes.core.data.source.remote.network.SpoonacularApiServi
 import com.endiar.anyrecipes.core.domain.repository.IAnyRepository
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,6 +36,12 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val hostName = "api.spoonacular.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostName, "sha256/DjBNmOWrmE91DLaH6gk+96MMBNjNs4/cbGxgvWLZi18=")
+            .add(hostName, "sha256/FEzVOUp4dF3gI0ZVPRJhFbSJVXR+uQmMH65xhs1glH4=")
+            .add(hostName, "sha256/Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o=")
+            .build()
         val requestInterceptor = Interceptor { chain ->
             val httpUrl = chain.request()
                 .url
@@ -53,6 +60,7 @@ val networkModule = module {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
 
