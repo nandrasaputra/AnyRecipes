@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.endiar.anyrecipes.R
@@ -33,7 +32,7 @@ class ResultByIngredientsFragment: Fragment() {
     }
 
     private fun observeData() {
-        resultByIngredientsViewModel.resultMediatorLiveData.observe( viewLifecycleOwner, Observer { resource ->
+        resultByIngredientsViewModel.resultMediatorLiveData.observe( viewLifecycleOwner) { resource ->
                 if (resource != null) {
                     when (resource) {
                         is Resource.Loading -> {
@@ -53,7 +52,7 @@ class ResultByIngredientsFragment: Fragment() {
                         }
                     }
                 }
-            })
+            }
     }
 
     private fun setupView() {

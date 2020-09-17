@@ -1,3 +1,5 @@
+@file:Suppress("unused", "unused", "unused")
+
 package com.endiar.anyrecipes.core.utils
 
 import android.os.Handler

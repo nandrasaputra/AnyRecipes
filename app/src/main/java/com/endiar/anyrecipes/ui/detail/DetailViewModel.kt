@@ -94,5 +94,4 @@ class DetailViewModel(
             }
         }
     }
-
 }

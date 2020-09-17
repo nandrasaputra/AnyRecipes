@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.endiar.anyrecipes.R
@@ -31,7 +30,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun observeData() {
-        detailViewModel.detailRemoteDataMediatorLiveData.observe( viewLifecycleOwner, Observer { resource ->
+        detailViewModel.detailRemoteDataMediatorLiveData.observe( viewLifecycleOwner) { resource ->
             if (resource != null) {
                 when (resource) {
                     is Resource.Loading -> {
@@ -50,12 +49,11 @@ class DetailFragment : Fragment() {
                     }
                 }
             }
-        })
+        }
 
-        detailViewModel.detailLocalDataMediatorLiveData.observe(
-            viewLifecycleOwner, Observer { favoriteStatus ->
+        detailViewModel.detailLocalDataMediatorLiveData.observe(viewLifecycleOwner) { favoriteStatus ->
                 handleLocalData(favoriteStatus)
-            })
+            }
     }
 
     private fun setupView() {

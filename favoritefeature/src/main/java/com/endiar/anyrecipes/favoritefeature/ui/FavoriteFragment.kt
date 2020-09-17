@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.endiar.anyrecipes.favoritefeature.R
 import com.endiar.anyrecipes.favoritefeature.adapter.FavoriteRecipeAdapter
@@ -37,8 +36,16 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun observeData() {
-        favoriteViewModel.favoriteMediatorLiveData.observe(viewLifecycleOwner) {
-            favoriteRecipeAdapter.submitList(it)
+        favoriteViewModel.favoriteMediatorLiveData.observe(viewLifecycleOwner) { favoriteList ->
+            favoriteList?.let {
+                favoriteRecipeAdapter.submitList(it)
+
+                if (it.isNotEmpty()) {
+                    fragment_favorite_lottie_layout.visibility = View.GONE
+                } else {
+                    fragment_favorite_lottie_layout.visibility = View.VISIBLE
+                }
+            }
         }
     }
 

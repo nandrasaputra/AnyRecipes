@@ -29,10 +29,10 @@ class AnyRecipeRepository(
                 emit(Resource.Success(DataMapper.mapGetRecipeInformationResponseToRecipeGist(data)))
             }
             is ApiResponse.Empty -> {
-                emit(Resource.Success(listOf()))
+                emit(Resource.Success<List<RecipeGist>>(listOf()))
             }
             is ApiResponse.Error -> {
-                emit(Resource.Error(apiResponse.errorMessage))
+                emit(Resource.Error<List<RecipeGist>>(apiResponse.errorMessage))
             }
         }
     }
@@ -45,10 +45,10 @@ class AnyRecipeRepository(
                 emit(Resource.Success(DataMapper.mapGetRecipesByIngredientsResponseItemToRecipeByIngredients(data)))
             }
             is ApiResponse.Empty -> {
-                emit(Resource.Success(listOf()))
+                emit(Resource.Success<List<RecipeByIngredients>>(listOf()))
             }
             is ApiResponse.Error -> {
-                emit(Resource.Error(apiResponse.errorMessage))
+                emit(Resource.Error<List<RecipeByIngredients>>(apiResponse.errorMessage))
             }
         }
     }
@@ -62,10 +62,10 @@ class AnyRecipeRepository(
             }
             is ApiResponse.Empty -> {
                 // Never Expected To Reach This
-                emit(Resource.Error("Something is wrong"))
+                emit(Resource.Error<RecipeFull>("Something is wrong"))
             }
             is ApiResponse.Error -> {
-                emit(Resource.Error(apiResponse.errorMessage))
+                emit(Resource.Error<RecipeFull>(apiResponse.errorMessage))
             }
         }
     }

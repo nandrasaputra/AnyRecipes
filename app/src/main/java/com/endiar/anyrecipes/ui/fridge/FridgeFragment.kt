@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.endiar.anyrecipes.R
 import com.endiar.anyrecipes.adapter.FridgeIngredientAdapter
 import com.endiar.anyrecipes.model.FridgeIngredientItemState
-import com.endiar.anyrecipes.utils.FakeData.fridgeData
+import com.endiar.anyrecipes.utils.Data.fridgeData
 import com.endiar.anyrecipes.utils.FridgeIngredientDecoration
 import com.endiar.anyrecipes.utils.convertMapToIngredients
 import com.endiar.anyrecipes.utils.dpToPx
@@ -66,15 +65,15 @@ class FridgeFragment : Fragment() {
     }
 
     private fun observeData() {
-        fridgeViewModel.fridgeIngredientItemStateMap.observe(viewLifecycleOwner) {
-            handleFridgeIngredientItemStateMapChange(it)
+        fridgeViewModel.fridgeIngredientItemStateMap.observe(viewLifecycleOwner) { mutableMap ->
+            handleFridgeIngredientItemStateMapChange(mutableMap)
         }
     }
 
     private fun handleFridgeIngredientItemStateMapChange(map: MutableMap<Int, FridgeIngredientItemState>) {
         if (map.isNotEmpty()) {
             var ingredientsCount = 0
-            for ((key, itemState) in map) {
+            for ((_, itemState) in map) {
                 if (itemState.isChecked) {
                     ingredientsCount++
                 }
