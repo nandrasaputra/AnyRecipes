@@ -2,8 +2,8 @@ package com.endiar.anyrecipes
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import com.endiar.anyrecipes.utils.setupWithNavController
@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         if (savedInstanceState == null) {
             setupBottomNavigationView()
+        }
+
+        if (getString(R.string.SPOONACULAR_API_KEY).isEmpty()) {
+            Toast.makeText(this, "Missing Spoonacular API key, please add to api.properties as SPOONACULAR_API_KEY=\"YOUR_API_KEY", Toast.LENGTH_LONG).show()
         }
     }
 

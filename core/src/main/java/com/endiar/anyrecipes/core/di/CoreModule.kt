@@ -2,6 +2,7 @@ package com.endiar.anyrecipes.core.di
 
 import androidx.room.Room
 import com.endiar.anyrecipes.core.BuildConfig
+import com.endiar.anyrecipes.core.R
 import com.endiar.anyrecipes.core.data.AnyRecipeRepository
 import com.endiar.anyrecipes.core.data.source.local.LocalDataSource
 import com.endiar.anyrecipes.core.data.source.local.room.AnyRecipeDatabase
@@ -34,7 +35,7 @@ val networkModule = module {
             val httpUrl = chain.request()
                 .url
                 .newBuilder()
-                .addQueryParameter("apiKey", BuildConfig.SPOONACULAR_API_KEY)
+                .addQueryParameter("apiKey", androidContext().getString(R.string.SPOONACULAR_API_KEY))
                 .build()
             val request = chain.request()
                 .newBuilder()

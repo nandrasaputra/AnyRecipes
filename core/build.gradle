@@ -4,9 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: '../shared_dependencies.gradle'
 
-def apiPropertiesFile = rootProject.file("api.properties")
+/*def apiPropertiesFile = rootProject.file("api.properties")
 def apiProperties = new Properties()
-apiProperties.load(new FileInputStream(apiPropertiesFile))
+apiProperties.load(new FileInputStream(apiPropertiesFile))*/
 
 android {
     compileSdkVersion 30
@@ -21,8 +21,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
+        // Read the API key from ./secure.properties into R.string.maps_api_key
+        def secureProps = new Properties()
+        if (file("../api.properties").exists()) {
+            file("../api.properties")?.withInputStream { secureProps.load(it) }
+        }
+        resValue "string", "SPOONACULAR_API_KEY", (secureProps.getProperty("SPOONACULAR_API_KEY") ?: "")
+
         //Load Api Key
-        buildConfigField("String", "SPOONACULAR_API_KEY", apiProperties["SPOONACULAR_API_KEY"])
+        //buildConfigField("String", "SPOONACULAR_API_KEY", apiProperties["SPOONACULAR_API_KEY"])
     }
 
     buildTypes {
