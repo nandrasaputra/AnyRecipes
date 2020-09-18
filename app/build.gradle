@@ -65,4 +65,7 @@ dependencies {
     // Activity and Fragment Extension
     implementation "androidx.activity:activity-ktx:$activity_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+
+    // Leak Canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }
