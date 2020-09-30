@@ -19,12 +19,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // Read the API key from ./secure.properties into R.string.maps_api_key
+        // Read the API key from ./api.properties into R.string.(key)
         def secureProps = new Properties()
         if (file("../api.properties").exists()) {
             file("../api.properties")?.withInputStream { secureProps.load(it) }
         }
-        resValue "string", "SPOONACULAR_API_KEY", (secureProps.getProperty("SPOONACULAR_API_KEY") ?: "")\
+        resValue "string", "SPOONACULAR_API_KEY", (secureProps.getProperty("SPOONACULAR_API_KEY") ?: "")
     }
 
     buildTypes {

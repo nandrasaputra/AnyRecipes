@@ -1,6 +1,7 @@
 package com.endiar.anyrecipes.ui.detail
 
 import androidx.lifecycle.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.endiar.anyrecipes.core.data.Resource
 import com.endiar.anyrecipes.core.domain.model.RecipeFull
 import com.endiar.anyrecipes.core.domain.usecase.LocalUseCase
