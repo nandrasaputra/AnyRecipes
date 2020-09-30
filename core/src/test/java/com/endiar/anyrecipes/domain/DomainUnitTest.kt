@@ -92,7 +92,13 @@ class DomainUnitTest {
         "Plantain Salad",
         729366,
         "",
-        ""
+        "",
+        listOf(),
+        listOf(),
+        listOf(),
+        isGlutenFree = false,
+        isDairyFree = false,
+        isVegetarian = false
     )
     private val detailRecipeId = 729366
     private val ingredients = "chicken, tofu"

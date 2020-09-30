@@ -1,19 +1,18 @@
 package com.endiar.anyrecipes.core.data.source.remote.response
 
-
 import com.google.gson.annotations.SerializedName
 
 data class GetRecipeInformationResponse(
     @SerializedName("aggregateLikes")
     val likesCount: Int?,
     @SerializedName("analyzedInstructions")
-    val instruction: List<Instruction>,
+    val instruction: List<Instruction>?,
     @SerializedName("dairyFree")
-    val dairyFree: Boolean,
+    val dairyFree: Boolean?,
     @SerializedName("extendedIngredients")
-    val ingredientList: List<Ingredient>,
+    val ingredientList: List<Ingredient>?,
     @SerializedName("glutenFree")
-    val glutenFree: Boolean,
+    val glutenFree: Boolean?,
     @SerializedName("healthScore")
     val healthScore: Double,
     @SerializedName("id")
@@ -31,20 +30,22 @@ data class GetRecipeInformationResponse(
     @SerializedName("title")
     val dishName: String?,
     @SerializedName("vegetarian")
-    val vegetarian: Boolean,
+    val vegetarian: Boolean?,
     @SerializedName("creditsText")
-    val creditText: String?
+    val creditText: String?,
+    @SerializedName("nutrition")
+    val nutrition: Nutrition?
 )
 
 data class Ingredient(
     @SerializedName("id")
     val ingredientId: Int,
     @SerializedName("image")
-    val ingredientImageUrl: String,
+    val ingredientImageUrl: String?,
     @SerializedName("name")
-    val ingredientName: String,
+    val ingredientName: String?,
     @SerializedName("original")
-    val description: String
+    val description: String?
 )
 
 data class Instruction(
@@ -57,4 +58,20 @@ data class Step(
     val number: Int,
     @SerializedName("step")
     val step: String
+)
+
+data class Nutrition(
+    @SerializedName("nutrients")
+    val nutrients: List<Nutrient>
+)
+
+data class Nutrient(
+    @SerializedName("amount")
+    val amount: Double?,
+    @SerializedName("percentOfDailyNeeds")
+    val percentOfDailyNeeds: Double?,
+    @SerializedName("title")
+    val title: String?,
+    @SerializedName("unit")
+    val unit: String?
 )

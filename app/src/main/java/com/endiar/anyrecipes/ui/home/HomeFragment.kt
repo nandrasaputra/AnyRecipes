@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
         homeHomeRecipeAdapter = HomeRecipeAdapter()
         fragment_home_recycle_view.apply {
             adapter = homeHomeRecipeAdapter
-            addItemDecoration(LinearItemDecoration())
+            addItemDecoration(LinearItemDecoration(16, 16))
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
     }

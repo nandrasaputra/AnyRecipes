@@ -56,7 +56,7 @@ class FavoriteFragment : Fragment() {
 
         fragment_favorite_recycler_view.apply {
             adapter = favoriteRecipeAdapter
-            addItemDecoration(LinearItemDecoration())
+            addItemDecoration(LinearItemDecoration(16, 16))
             layoutManager = LinearLayoutManager(requireContext())
         }
     }

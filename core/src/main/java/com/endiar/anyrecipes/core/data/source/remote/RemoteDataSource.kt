@@ -15,15 +15,11 @@ class RemoteDataSource(private val spoonacularApiService: SpoonacularApiService)
         return flow {
             try {
                 val response = spoonacularApiService.getRandomRecipes(15)
-                if (response.isSuccessful) {
-                    val data = response.body()!!.recipes
-                    if (data.isNotEmpty()) {
-                        emit(ApiResponse.Success(data))
-                    } else {
-                        emit(ApiResponse.Empty)
-                    }
+                val recipes = response.recipes
+                if (recipes.isNotEmpty()) {
+                    emit(ApiResponse.Success(recipes))
                 } else {
-                    emit(ApiResponse.Error("Something is wrong, Network Error Code: ${response.code()}"))
+                    emit(ApiResponse.Empty)
                 }
             } catch (exception: Exception) {
                 emit(ApiResponse.Error("Something is wrong, Error: $exception"))
@@ -34,13 +30,8 @@ class RemoteDataSource(private val spoonacularApiService: SpoonacularApiService)
     suspend fun getSingleDetailRecipes(id: Int): Flow<ApiResponse<GetRecipeInformationResponse>> {
         return flow {
             try {
-                val response = spoonacularApiService.getRecipeInformation(id)
-                if (response.isSuccessful) {
-                    val data = response.body()!!
-                    emit(ApiResponse.Success(data))
-                } else {
-                    emit(ApiResponse.Error("Something is wrong, Network Error Code: ${response.code()}"))
-                }
+                val response = spoonacularApiService.getRecipeInformation(id, true)
+                emit(ApiResponse.Success(response))
             } catch (exception: Exception) {
                 emit(ApiResponse.Error("Something is wrong, Error: $exception"))
             }
@@ -51,11 +42,11 @@ class RemoteDataSource(private val spoonacularApiService: SpoonacularApiService)
         return flow {
             try {
                 val response = spoonacularApiService.getRecipesByIngredients(ingredients, 16)
-                if (response.isSuccessful) {
-                    val data = response.body()!!.toList()
-                    emit(ApiResponse.Success(data))
+                val recipe = response.toList()
+                if (recipe.isNotEmpty()) {
+                    emit(ApiResponse.Success(recipe))
                 } else {
-                    emit(ApiResponse.Error("Something is wrong, Network Error Code: ${response.code()}"))
+                    emit(ApiResponse.Empty)
                 }
             } catch (exception: Exception) {
                 emit(ApiResponse.Error("Something is wrong, Error: $exception"))

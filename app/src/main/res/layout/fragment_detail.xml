@@ -26,7 +26,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/fragment_detail_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -34,9 +34,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_detail_scroll_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -67,7 +70,7 @@
                 android:fontFamily="@font/poppins_medium"
                 tools:text="Creamy Vegan Butternut Squash Mac and Cheese"
                 android:textColor="@color/blackPure"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/fragment_detail_like_count_layout"
@@ -142,7 +145,7 @@
                     android:maxLines="1"
                     tools:text="by RM Beringin Edy"
                     android:textColor="@color/grayNormal"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <ImageView
@@ -157,39 +160,119 @@
                 app:tint="@color/pink500"
                 android:contentDescription="@string/favorite_button" />
 
-            <TextView
-                android:id="@+id/fragment_detail_instruction_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+            <ImageView
+                android:id="@+id/fragment_detail_vegan_image"
+                android:layout_width="@dimen/fragment_detail_icon_size"
+                android:layout_height="@dimen/fragment_detail_icon_size"
+                android:src="@drawable/ic_detail_vegan_filled"
+                app:layout_constraintEnd_toStartOf="@id/fragment_detail_dairy_image"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="32dp"
-                android:text="@string/fragment_detail_instruction_text"
-                android:textSize="16sp"
-                android:textColor="@color/blackQuarter"
-                android:fontFamily="@font/poppins_medium" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                android:layout_marginTop="@dimen/fragment_detail_diet_icon_top_space"/>
 
             <TextView
-                android:id="@+id/fragment_detail_instruction_desc"
-                android:layout_width="0dp"
+                android:id="@+id/fragment_detail_vegan_text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/fragment_detail_instruction_title"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_vegan_image"
+                app:layout_constraintStart_toStartOf="@id/fragment_detail_vegan_image"
+                app:layout_constraintEnd_toEndOf="@id/fragment_detail_vegan_image"
+                android:layout_marginTop="@dimen/fragment_detail_diet_icon_to_text_space"
+                android:text="Vegetarian\n Safe"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:id="@+id/fragment_detail_dairy_image"
+                android:layout_width="@dimen/fragment_detail_icon_size"
+                android:layout_height="@dimen/fragment_detail_icon_size"
+                android:src="@drawable/ic_detail_dairy_filled"
+                app:layout_constraintEnd_toStartOf="@id/fragment_detail_gluten_image"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                app:layout_constraintStart_toEndOf="@id/fragment_detail_vegan_image"
+                android:layout_marginTop="@dimen/fragment_detail_diet_icon_top_space"/>
+
+            <TextView
+                android:id="@+id/fragment_detail_dairy_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_dairy_image"
+                app:layout_constraintStart_toStartOf="@id/fragment_detail_dairy_image"
+                app:layout_constraintEnd_toEndOf="@id/fragment_detail_dairy_image"
+                android:layout_marginTop="@dimen/fragment_detail_diet_icon_to_text_space"
+                android:text="Dairy\nFree"
+                android:textAlignment="center"
+                />
+
+            <ImageView
+                android:id="@+id/fragment_detail_gluten_image"
+                android:layout_width="@dimen/fragment_detail_icon_size"
+                android:layout_height="@dimen/fragment_detail_icon_size"
+                android:src="@drawable/ic_detail_gluten_filled"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                app:layout_constraintStart_toEndOf="@id/fragment_detail_dairy_image"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                android:layout_marginTop="@dimen/fragment_detail_diet_icon_top_space"/>
+
+            <TextView
+                android:id="@+id/fragment_detail_gluten_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_gluten_image"
+                app:layout_constraintStart_toStartOf="@id/fragment_detail_gluten_image"
+                app:layout_constraintEnd_toEndOf="@id/fragment_detail_gluten_image"
+                android:layout_marginTop="@dimen/fragment_detail_diet_icon_to_text_space"
+                android:text="Dairy\nFree"
+                android:textAlignment="center"
+                />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/fragment_detail_diet_barrier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="fragment_detail_dairy_text, @+id/fragment_detail_gluten_text, @+id/fragment_detail_vegan_text"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/fragment_detail_tab_layout"
+                android:theme="@style/AnyRecipes.TabLayout"
+                app:tabTextAppearance="@style/AnyRecipes.TabLayout.TextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_diet_barrier"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="Cube your plantain, fry and set aside.Chop your vegetables into your salad bowl and tossIn a pan, heat up vegetable oil and stir fry your shrimps and season. Allow to coolToss in your plantain and shrimps once cool into your bowl of vegetables.Sprinkle the parmesan cheese over the saladDrizzle your dressing over and serve cool"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="16dp"
-                android:textSize="14sp"
-                android:textColor="@color/grayNormal"
-                android:fontFamily="@font/poppins_regular" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/fragment_detail_tab_item_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overview" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/fragment_detail_tab_item_step"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Steps"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/fragment_detail_tab_item_nutrition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nutrition"/>
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/fragment_detail_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_tab_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/fragment_detail_shimmer_layout"

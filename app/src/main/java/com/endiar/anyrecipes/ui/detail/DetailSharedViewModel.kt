@@ -8,7 +8,7 @@ import com.endiar.anyrecipes.core.domain.usecase.LocalUseCase
 import com.endiar.anyrecipes.core.domain.usecase.RemoteUseCase
 import kotlinx.coroutines.launch
 
-class DetailViewModel(
+class DetailSharedViewModel(
     private val localUseCase: LocalUseCase,
     private val remoteUseCase: RemoteUseCase
 ) : ViewModel() {
