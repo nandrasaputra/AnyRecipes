@@ -5,7 +5,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.endiar.anyrecipes.R
 import com.endiar.anyrecipes.adapter.HomeRecipeAdapter
@@ -59,30 +58,33 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeData() {
-        homeViewModel.homeMediatorLiveData.observe(viewLifecycleOwner, Observer { resource ->
+        homeViewModel.homeMediatorLiveData.observe(viewLifecycleOwner) { resource ->
             if (resource != null) {
                 when (resource) {
                     is Resource.Loading -> {
-                        fragment_home_progress_bar.visibility = View.VISIBLE
+                        fragment_home_recycle_view.visibility = View.GONE
+                        fragment_home_shimmer_layout.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        fragment_home_progress_bar.visibility = View.GONE
+                        fragment_home_shimmer_layout.visibility = View.GONE
+                        fragment_home_recycle_view.visibility = View.VISIBLE
                         homeHomeRecipeAdapter.submitList(resource.data)
                     }
                     is Resource.Error -> {
-                        fragment_home_progress_bar.visibility = View.GONE
+                        fragment_home_shimmer_layout.visibility = View.GONE
+                        fragment_home_recycle_view.visibility = View.GONE
                         Toast.makeText(requireContext(), "${resource.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-        })
+        }
     }
 
     private fun setupView() {
         homeHomeRecipeAdapter = HomeRecipeAdapter()
         fragment_home_recycle_view.apply {
             adapter = homeHomeRecipeAdapter
-            addItemDecoration(LinearItemDecoration())
+            addItemDecoration(LinearItemDecoration(16, 16))
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
     }

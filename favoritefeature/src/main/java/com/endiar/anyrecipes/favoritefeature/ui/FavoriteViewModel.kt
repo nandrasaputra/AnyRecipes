@@ -1,11 +1,9 @@
 package com.endiar.anyrecipes.favoritefeature.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.endiar.anyrecipes.core.domain.model.FavoriteRecipe
 import com.endiar.anyrecipes.core.domain.usecase.LocalUseCase
+import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val localUseCase: LocalUseCase) : ViewModel() {
 
@@ -20,6 +18,8 @@ class FavoriteViewModel(private val localUseCase: LocalUseCase) : ViewModel() {
     }
 
     fun removeRecipeFromFavorite(recipeId: Int) {
-        localUseCase.removeFavoriteRecipeGist(recipeId)
+        viewModelScope.launch {
+            localUseCase.removeFavoriteRecipeGist(recipeId)
+        }
     }
 }

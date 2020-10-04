@@ -8,7 +8,6 @@ import com.endiar.anyrecipes.core.domain.model.RecipeByIngredients
 import com.endiar.anyrecipes.core.domain.model.RecipeFull
 import com.endiar.anyrecipes.core.domain.model.RecipeGist
 import com.endiar.anyrecipes.core.domain.repository.IAnyRepository
-import com.endiar.anyrecipes.core.utils.AppExecutors
 import com.endiar.anyrecipes.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -17,8 +16,7 @@ import kotlinx.coroutines.flow.map
 
 class AnyRecipeRepository(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
 ) : IAnyRepository {
 
     override fun getRecipeGistList(): Flow<Resource<List<RecipeGist>>> = flow {
@@ -29,10 +27,10 @@ class AnyRecipeRepository(
                 emit(Resource.Success(DataMapper.mapGetRecipeInformationResponseToRecipeGist(data)))
             }
             is ApiResponse.Empty -> {
-                emit(Resource.Success(listOf()))
+                emit(Resource.Success<List<RecipeGist>>(listOf()))
             }
             is ApiResponse.Error -> {
-                emit(Resource.Error(apiResponse.errorMessage))
+                emit(Resource.Error<List<RecipeGist>>(apiResponse.errorMessage))
             }
         }
     }
@@ -45,10 +43,10 @@ class AnyRecipeRepository(
                 emit(Resource.Success(DataMapper.mapGetRecipesByIngredientsResponseItemToRecipeByIngredients(data)))
             }
             is ApiResponse.Empty -> {
-                emit(Resource.Success(listOf()))
+                emit(Resource.Success<List<RecipeByIngredients>>(listOf()))
             }
             is ApiResponse.Error -> {
-                emit(Resource.Error(apiResponse.errorMessage))
+                emit(Resource.Error<List<RecipeByIngredients>>(apiResponse.errorMessage))
             }
         }
     }
@@ -62,24 +60,20 @@ class AnyRecipeRepository(
             }
             is ApiResponse.Empty -> {
                 // Never Expected To Reach This
-                emit(Resource.Error("Something is wrong"))
+                emit(Resource.Error<RecipeFull>("Something is wrong"))
             }
             is ApiResponse.Error -> {
-                emit(Resource.Error(apiResponse.errorMessage))
+                emit(Resource.Error<RecipeFull>(apiResponse.errorMessage))
             }
         }
     }
 
-    override fun setFavoriteRecipe(recipe: RecipeFull) {
-        appExecutors.diskIO().execute {
-            localDataSource.setFavoriteRecipe(DataMapper.changeRecipeFullToFavoriteRecipeEntity(recipe))
-        }
+    override suspend fun setFavoriteRecipe(recipe: RecipeFull) {
+        localDataSource.setFavoriteRecipe(DataMapper.changeRecipeFullToFavoriteRecipeEntity(recipe))
     }
 
-    override fun removeFavoriteRecipe(recipeId: Int) {
-        appExecutors.diskIO().execute {
-            localDataSource.removeFavoriteRecipe(recipeId)
-        }
+    override suspend fun removeFavoriteRecipe(recipeId: Int) {
+        localDataSource.removeFavoriteRecipe(recipeId)
     }
 
     override fun getFavoriteRecipeList(): Flow<List<FavoriteRecipe>> {
@@ -96,6 +90,4 @@ class AnyRecipeRepository(
             emit(false)
         }
     }
-
-
 }

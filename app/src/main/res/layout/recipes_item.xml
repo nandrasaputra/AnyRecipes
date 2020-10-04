@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -25,7 +26,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="W, 1:3"
         android:src="@drawable/picture_gradient_bot"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -35,7 +37,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="W, 1:5"
         android:src="@drawable/picture_gradient_top"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/recipes_item_dish_name"
@@ -47,7 +50,7 @@
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:text="Lasagna Pasta With Extra Cheese Deluxe Special"
+        tools:text="Lasagna Pasta With Extra Cheese Deluxe Special"
         android:textColor="#FFFFFF"
         android:fontFamily="@font/poppins_bold"
         android:textSize="18sp"
@@ -63,7 +66,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
         android:src="@drawable/ic_like_filled"
-        app:tint="@color/whitePure"/>
+        app:tint="@color/whitePure"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/recipes_item_like_count_text"
@@ -74,7 +78,7 @@
         app:layout_constraintStart_toEndOf="@id/recipes_item_like_count_image"
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
-        android:text="100"
+        tools:text="100"
         android:fontFamily="@font/poppins_medium"
         android:textColor="@color/whitePure"
         android:textSize="14sp" />
@@ -88,7 +92,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
         android:src="@drawable/ic_clock_filled"
-        app:tint="@color/whitePure"/>
+        app:tint="@color/whitePure"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/recipes_item_time_count_text"
@@ -99,7 +104,7 @@
         app:layout_constraintStart_toEndOf="@id/recipes_item_time_count_image"
         android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
-        android:text="100"
+        tools:text="100"
         android:fontFamily="@font/poppins_medium"
         android:textColor="@color/whitePure"
         android:textSize="14sp" />
@@ -112,7 +117,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        android:src="@drawable/ic_author"/>
+        android:src="@drawable/ic_author"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/recipes_item_author_text"
@@ -130,6 +136,6 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/poppins_medium"
         android:textColor="@color/whitePure"
-        android:text="Foodista.com – The Cooking Encyclopedia Everyone Can Edit" />
+        tools:text="Foodista.com – The Cooking Encyclopedia Everyone Can Edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,9 +8,9 @@ class LocalDataSource(private val favoriteRecipeDao: FavoriteRecipeDao) {
 
     fun getAllFavoriteRecipe(): Flow<List<FavoriteRecipeEntity>> = favoriteRecipeDao.getAllFavoriteRecipes()
 
-    fun setFavoriteRecipe(favoriteRecipe: FavoriteRecipeEntity) = favoriteRecipeDao.setFavoriteRecipe(favoriteRecipe)
+    suspend fun setFavoriteRecipe(favoriteRecipe: FavoriteRecipeEntity) = favoriteRecipeDao.setFavoriteRecipe(favoriteRecipe)
 
-    fun removeFavoriteRecipe(recipeId: Int) = favoriteRecipeDao.removeFavoriteRecipe(recipeId)
+    suspend fun removeFavoriteRecipe(recipeId: Int) = favoriteRecipeDao.removeFavoriteRecipe(recipeId)
 
     fun getSingleFavoriteRecipe(recipeId: Int): Flow<FavoriteRecipeEntity?> = favoriteRecipeDao.getSingleFavoriteRecipe(recipeId)
 

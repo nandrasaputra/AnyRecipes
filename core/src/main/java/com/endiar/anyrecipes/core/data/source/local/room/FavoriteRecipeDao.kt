@@ -17,9 +17,9 @@ interface FavoriteRecipeDao {
     fun getSingleFavoriteRecipe(recipeId: Int): Flow<FavoriteRecipeEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun setFavoriteRecipe(favoriteRecipe: FavoriteRecipeEntity)
+    suspend fun setFavoriteRecipe(favoriteRecipe: FavoriteRecipeEntity)
 
     @Query("DELETE FROM favorite_recipe WHERE recipeId = :recipeId")
-    fun removeFavoriteRecipe(recipeId: Int)
+    suspend fun removeFavoriteRecipe(recipeId: Int)
 
 }

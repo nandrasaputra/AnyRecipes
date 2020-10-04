@@ -5,4 +5,21 @@
     <string name="title_fridge">Fridge</string>
     <string name="title_account">Account</string>
     <string name="title_favoritefeature">Favorite Feature</string>
+    <string name="fragment_account_name_text">Nandra Saputra</string>
+    <string name="fragment_account_email_text">nandra.saputras@gmail.com</string>
+    <string name="fragment_account_credit_title_text">Credits:</string>
+    <string name="fragment_account_credit_spoonacular_text">All recipe data from this app is belong to Spoonacular API</string>
+    <string name="fragment_account_toolbar_title_text">Account</string>
+    <string name="fragment_detail_toolbar_title_text">Detail Recipe</string>
+    <string name="fragment_fridge_toolbar_title_text">My Fridge</string>
+    <string name="fragment_search_result_toolbar_title_text">Search Result</string>
+    <string name="float_view_continue_text">CONTINUE</string>
+    <string name="fridge_menu_header_description_text">Search recipe based on ingredient that you have on your fridge.</string>
+    <string name="fridge_menu_header_title_text">Pick Ingredients:</string>
+    <string name="refresh">Refresh</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="favorite_button">favorite button</string>
+    <string name="continue_button">continue button</string>
+    <string name="ingredient_image">ingredient image</string>
+    <string name="fragment_detail_instruction_text">Summary</string>
 </resources>

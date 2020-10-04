@@ -33,4 +33,12 @@
         <item name="colorAccent">#3F51B5</item>
     </style>
 
+    <style name="AnyRecipes.TabLayout" parent="ThemeOverlay.MaterialComponents">
+        <item name="colorPrimary">@color/redRuby</item>
+    </style>
+
+    <style name="AnyRecipes.TabLayout.TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
 </resources>

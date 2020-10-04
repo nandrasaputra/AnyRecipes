@@ -21,6 +21,10 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -40,7 +44,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     api 'androidx.core:core-ktx:1.3.1'
     api 'androidx.appcompat:appcompat:1.2.0'
-    api 'com.google.android.material:material:1.2.0'
+    api 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -57,8 +61,9 @@ dependencies {
     api "com.github.bumptech.glide:glide:$glide_version"
     //Rounded ImageView
     api "com.makeramen:roundedimageview:$rounded_image_version"
-
     // Activity and Fragment Extension
     implementation "androidx.activity:activity-ktx:$activity_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+    // ViewPager2
+    implementation "androidx.viewpager2:viewpager2:$view_pager2_version"
 }

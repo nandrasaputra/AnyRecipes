@@ -9,8 +9,6 @@ import com.endiar.anyrecipes.R
 
 class AccountFragment : Fragment() {
 
-    //private val accountViewModel: AccountViewModel by viewModels()
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_account, container, false)
     }

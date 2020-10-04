@@ -4,7 +4,7 @@ import com.endiar.anyrecipes.core.domain.usecase.LocalInteractor
 import com.endiar.anyrecipes.core.domain.usecase.LocalUseCase
 import com.endiar.anyrecipes.core.domain.usecase.RemoteInteractor
 import com.endiar.anyrecipes.core.domain.usecase.RemoteUseCase
-import com.endiar.anyrecipes.ui.detail.DetailViewModel
+import com.endiar.anyrecipes.ui.detail.DetailSharedViewModel
 import com.endiar.anyrecipes.ui.fridge.FridgeViewModel
 import com.endiar.anyrecipes.ui.home.HomeViewModel
 import com.endiar.anyrecipes.ui.resultbyingredients.ResultByIngredientsViewModel
@@ -18,7 +18,7 @@ val useCaseModule = module {
 
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
-    viewModel { DetailViewModel(get(), get()) }
+    viewModel { DetailSharedViewModel(get(), get()) }
     viewModel { ResultByIngredientsViewModel(get()) }
     viewModel { FridgeViewModel() }
 }
