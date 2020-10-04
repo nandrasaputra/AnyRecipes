@@ -19,4 +19,7 @@
     <color name="shimmerColorOne">#C9C9C9</color>
     <color name="shimmerColorTwo">#ACACAC</color>
     <color name="shimmerColorThree">#838383</color>
+
+    <color name="tabLayoutSurface">#F8BBD0</color>
+    <color name="backgroundBaseColor">#f7f7f9</color>
 </resources>

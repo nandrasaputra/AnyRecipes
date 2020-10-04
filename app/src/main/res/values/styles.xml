@@ -35,10 +35,15 @@
 
     <style name="AnyRecipes.TabLayout" parent="ThemeOverlay.MaterialComponents">
         <item name="colorPrimary">@color/redRuby</item>
+        <item name="colorSurface">@color/tabLayoutSurface</item>
     </style>
 
     <style name="AnyRecipes.TabLayout.TextAppearance" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
 </resources>

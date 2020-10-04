@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <ImageView
         android:id="@+id/detail_shimmer_dish_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -13,12 +13,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="H, 4:3"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:scaleType="centerCrop"
-        android:src="@color/shimmerColorOne"
-        app:riv_corner_radius="16dp" />
+        android:src="@color/shimmerColorOne" />
 
     <ImageView
         android:id="@+id/detail_shimmer_dish_name"
