@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.makeramen.roundedimageview.RoundedImageView
+            <ImageView
                 android:id="@+id/fragment_detail_dish_image"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -51,11 +51,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintDimensionRatio="H, 4:3"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:scaleType="centerCrop"
-                app:riv_corner_radius="16dp" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/fragment_detail_dish_name"
@@ -161,13 +157,22 @@
                 android:contentDescription="@string/favorite_button" />
 
             <ImageView
+                android:id="@+id/fragment_detail_separator_one"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                android:src="@color/backgroundBaseColor"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
                 android:id="@+id/fragment_detail_vegan_image"
                 android:layout_width="@dimen/fragment_detail_icon_size"
                 android:layout_height="@dimen/fragment_detail_icon_size"
                 android:src="@drawable/ic_detail_vegan_filled"
                 app:layout_constraintEnd_toStartOf="@id/fragment_detail_dairy_image"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_separator_one"
                 android:layout_marginTop="@dimen/fragment_detail_diet_icon_top_space"/>
 
             <TextView
@@ -179,6 +184,8 @@
                 app:layout_constraintEnd_toEndOf="@id/fragment_detail_vegan_image"
                 android:layout_marginTop="@dimen/fragment_detail_diet_icon_to_text_space"
                 android:text="Vegetarian\n Safe"
+                android:textSize="@dimen/fragment_detail_diet_text_size"
+                android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
                 />
 
@@ -188,7 +195,7 @@
                 android:layout_height="@dimen/fragment_detail_icon_size"
                 android:src="@drawable/ic_detail_dairy_filled"
                 app:layout_constraintEnd_toStartOf="@id/fragment_detail_gluten_image"
-                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_separator_one"
                 app:layout_constraintStart_toEndOf="@id/fragment_detail_vegan_image"
                 android:layout_marginTop="@dimen/fragment_detail_diet_icon_top_space"/>
 
@@ -201,6 +208,8 @@
                 app:layout_constraintEnd_toEndOf="@id/fragment_detail_dairy_image"
                 android:layout_marginTop="@dimen/fragment_detail_diet_icon_to_text_space"
                 android:text="Dairy\nFree"
+                android:textSize="@dimen/fragment_detail_diet_text_size"
+                android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
                 />
 
@@ -211,7 +220,7 @@
                 android:src="@drawable/ic_detail_gluten_filled"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fragment_detail_dairy_image"
-                app:layout_constraintTop_toBottomOf="@id/fragment_detail_like_count_layout"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_separator_one"
                 android:layout_marginTop="@dimen/fragment_detail_diet_icon_top_space"/>
 
             <TextView
@@ -223,6 +232,8 @@
                 app:layout_constraintEnd_toEndOf="@id/fragment_detail_gluten_image"
                 android:layout_marginTop="@dimen/fragment_detail_diet_icon_to_text_space"
                 android:text="Dairy\nFree"
+                android:textSize="@dimen/fragment_detail_diet_text_size"
+                android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
                 />
 
@@ -233,16 +244,24 @@
                 app:barrierDirection="bottom"
                 app:constraint_referenced_ids="fragment_detail_dairy_text, @+id/fragment_detail_gluten_text, @+id/fragment_detail_vegan_text"/>
 
+            <ImageView
+                android:id="@+id/fragment_detail_separator_two"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_diet_barrier"
+                android:src="@color/backgroundBaseColor"/>
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/fragment_detail_tab_layout"
                 android:theme="@style/AnyRecipes.TabLayout"
                 app:tabTextAppearance="@style/AnyRecipes.TabLayout.TextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/fragment_detail_diet_barrier"
+                app:layout_constraintTop_toBottomOf="@id/fragment_detail_separator_two"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="32dp">
+                android:layout_marginTop="16dp">
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/fragment_detail_tab_item_overview"
