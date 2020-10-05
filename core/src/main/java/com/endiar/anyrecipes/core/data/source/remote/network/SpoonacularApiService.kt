@@ -3,7 +3,6 @@ package com.endiar.anyrecipes.core.data.source.remote.network
 import com.endiar.anyrecipes.core.data.source.remote.response.GetRandomRecipesResponse
 import com.endiar.anyrecipes.core.data.source.remote.response.GetRecipeInformationResponse
 import com.endiar.anyrecipes.core.data.source.remote.response.GetRecipesByIngredientsResponse
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

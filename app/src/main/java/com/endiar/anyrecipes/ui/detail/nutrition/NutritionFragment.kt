@@ -12,7 +12,6 @@ import com.endiar.anyrecipes.core.data.Resource
 import com.endiar.anyrecipes.ui.detail.DetailSharedViewModel
 import com.endiar.anyrecipes.utils.LinearItemDecoration
 import kotlinx.android.synthetic.main.fragment_nutrition.*
-import kotlinx.android.synthetic.main.fragment_overview.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class NutritionFragment : Fragment() {

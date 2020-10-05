@@ -1,10 +1,11 @@
 package com.endiar.anyrecipes.ui.detail
 
 import android.os.Bundle
-import android.util.Log
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -28,7 +29,11 @@ class DetailFragment : Fragment() {
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var detailViewPagerAdapter: DetailViewPagerAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
@@ -54,7 +59,8 @@ class DetailFragment : Fragment() {
                     is Resource.Error -> {
                         fragment_detail_shimmer_layout.visibility = View.GONE
                         fragment_detail_scroll_view.visibility = View.GONE
-                        Toast.makeText(requireContext(), "${resource.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "${resource.message}", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
@@ -94,7 +100,7 @@ class DetailFragment : Fragment() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                val view = childFragmentManager.findFragmentByTag("f" + position)?.view
+                val view = childFragmentManager.findFragmentByTag("f$position")?.view
                 adjustViewPagerFragmentHeight(view)
             }
         })
@@ -139,7 +145,11 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun handleDietAppearance(isGlutenFree: Boolean, isDairyFree: Boolean, isVegetarian: Boolean) {
+    private fun handleDietAppearance(
+        isGlutenFree: Boolean,
+        isDairyFree: Boolean,
+        isVegetarian: Boolean
+    ) {
         if (isGlutenFree) {
             fragment_detail_gluten_text.text = "Gluten\nFree"
         } else {
@@ -162,7 +172,9 @@ class DetailFragment : Fragment() {
     private fun adjustViewPagerFragmentHeight(view: View?) {
         view?.let {
             it.post {
-                val minHeight = dpToPx(requireContext(), 256)
+                val displayMetrics = DisplayMetrics()
+                requireActivity().windowManager.defaultDisplay.getRealMetrics(displayMetrics)
+                val desiredMinHeight = displayMetrics.heightPixels - dpToPx(requireContext(), 256)
 
                 val wMeasureSpec =
                     View.MeasureSpec.makeMeasureSpec(it.width, View.MeasureSpec.EXACTLY)
@@ -170,15 +182,18 @@ class DetailFragment : Fragment() {
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
                 it.measure(wMeasureSpec, hMeasureSpec)
 
-                val desiredHeight = if (minHeight < it.measuredHeight) {
+                val desiredHeight = if (desiredMinHeight < it.measuredHeight) {
                     it.measuredHeight
                 } else {
-                    minHeight
+                    desiredMinHeight
                 }
 
                 fragment_detail_view_pager.layoutParams =
                     (fragment_detail_view_pager.layoutParams as ConstraintLayout.LayoutParams)
                         .also { layoutParams -> layoutParams.height = desiredHeight }
+
+                it.layoutParams = (it.layoutParams as FrameLayout.LayoutParams)
+                    .also { layoutParams -> layoutParams.height = desiredHeight}
             }
         }
     }

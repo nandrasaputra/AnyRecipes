@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.ingredient_item.view.*
 
 class IngredientAdapter : RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder>() {
 
-    var currentList: List<String> = listOf()
+    private var currentList: List<String> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ingredient_item, parent, false)
