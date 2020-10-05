@@ -43,8 +43,8 @@ Nandra Saputra
 * <a href='https://www.instagram.com/nandrasptr/'>@nandrasptr</a> on Instagram
 * <a href='https://www.linkedin.com/in/nandra-saputra-b90b78157/'>LinkedIn</a> Account
 
-## Download Application - APK File
-This app require Android 5.0 - Lolipop or higher to run, Please check release section to download the app.
+## Download Application - APKs File and Installation Guide
+This app require Android 5.0 - Lolipop or higher to run, Please check release section to download the APKs file. Please note that you need <a href='https://developer.android.com/studio/command-line/bundletool'>bundletool</a> to install APKs file into your devices.
 
 ## License
 
