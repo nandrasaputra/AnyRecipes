@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintDimensionRatio="H, 4:3"
         android:scaleType="centerCrop"
-        android:src="@color/shimmerColorOne" />
+        android:src="@color/shimmerColorOne"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/detail_shimmer_dish_name"
