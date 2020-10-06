@@ -1,7 +1,7 @@
 <img height='200' src="app/src/main/res/mipmap-xxxhdpi/ic_anyrecipe_launcher_logo_round.png" align="left">
 
 # AnyRecipes
-AnyRecipes is a simple recipes for Android that allow user to view recipes and save their favorite recipes. This app is written in Kotlin with <a href='https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html'>Clean Architecture</a>, Using Android <a href='https://developer.android.com/jetpack'>Jetpack</a> Library such as Navigation, Room, ViewModel, Paging and LiveData. <a href='https://github.com/InsertKoinIO/koin'>Koin</a> is used to perform dependencies injection in this app. This app apply modularization, there is 3 module: app module, core module and feature module. This app also using Kotlin <a href='https://github.com/Kotlin/kotlinx.coroutines'>Coroutine</a> to perform asyncronous operation, Coroutine Flow to handle asyncronous data stream and <a href='https://square.github.io/retrofit/'>Retrofit</a> to communicate with REST API. All recipes data is provided by <a href='https://spoonacular.com/food-api/'>Spoonacular API</a>. And last but not least, this app also apply Advanced Security such as Database Encryption, obfuscation with proguard and Certificate Pinning (to secure the connection with the API). This app was developed to complete <a href='https://www.dicoding.com/academies/165'>Menjadi Android Developer Expert</a> final project and got 5/5 score.
+AnyRecipes is a simple recipes for Android that allow user to view recipes and save their favorite recipes. This app is written in Kotlin with <a href='https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html'>Clean Architecture</a> and MVVM (Model-View-ViewModel) Architecture, Using Android <a href='https://developer.android.com/jetpack'>Jetpack</a> Library such as Navigation, Room, ViewModel, Paging and LiveData. <a href='https://github.com/InsertKoinIO/koin'>Koin</a> is used to perform dependencies injection in this app. This app apply modularization, there is 3 module: app module, core module and feature module. This app also using Kotlin <a href='https://github.com/Kotlin/kotlinx.coroutines'>Coroutine</a> to perform asyncronous operation, Coroutine Flow to handle asyncronous data stream and <a href='https://square.github.io/retrofit/'>Retrofit</a> to communicate with REST API. All recipes data is provided by <a href='https://spoonacular.com/food-api/'>Spoonacular API</a>. And last but not least, this app also apply Advanced Security such as Database Encryption, obfuscation with proguard and Certificate Pinning (to secure the connection with the API). This app was developed to complete <a href='https://www.dicoding.com/academies/165'>Menjadi Android Developer Expert</a> final project and got 5/5 score.
 
 ## Preview
 <p float="center">
@@ -18,11 +18,7 @@ You need <a href='https://spoonacular.com/food-api'>Spoonacular API</a> Key to m
 In your api.properties (AnyRecipes/api.properties) :
 
 ```xml
-...
-
 SPOONACULAR_API_KEY = "YOUR_API_KEY"
-
-...
 ```
 
 ## Built With
