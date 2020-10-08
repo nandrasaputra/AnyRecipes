@@ -7,10 +7,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.endiar.anyrecipes.R
 import com.endiar.anyrecipes.core.domain.model.RecipeGist
 import com.endiar.anyrecipes.ui.home.HomeFragmentDirections
+import com.endiar.anyrecipes.utils.loadImage
 import kotlinx.android.synthetic.main.recipes_item.view.*
 
 class HomeRecipeAdapter : ListAdapter<RecipeGist, HomeRecipeAdapter.HomeRecipeViewHolder>(diffUtil) {
@@ -34,16 +34,7 @@ class HomeRecipeAdapter : ListAdapter<RecipeGist, HomeRecipeAdapter.HomeRecipeVi
                 recipes_item_like_count_text.text = likeCountTextPlaceHolder
                 recipes_item_author_text.text = recipeGist.creditText
 
-                if (recipeGist.dishImageUrl.isNotBlank()) {
-                    Glide.with(context)
-                        .load(recipeGist.dishImageUrl)
-                        .placeholder(R.drawable.background_placeholder)
-                        .into(recipes_item_dish_image)
-                } else {
-                    Glide.with(context)
-                        .load(R.drawable.background_placeholder)
-                        .into(recipes_item_dish_image)
-                }
+                context.loadImage(recipeGist.dishImageUrl, recipes_item_dish_image)
             }
             itemView.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(recipeGist.dishId)

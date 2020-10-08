@@ -2,9 +2,7 @@ package com.endiar.anyrecipes.ui.detail
 
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -18,24 +16,17 @@ import com.endiar.anyrecipes.adapter.DetailViewPagerAdapter
 import com.endiar.anyrecipes.core.data.Resource
 import com.endiar.anyrecipes.core.domain.model.RecipeFull
 import com.endiar.anyrecipes.utils.dpToPx
+import com.endiar.anyrecipes.utils.loadImage
 import com.endiar.anyrecipes.utils.tabTitleProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_detail.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class DetailFragment : Fragment() {
+class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val detailSharedViewModel: DetailSharedViewModel by sharedViewModel()
     private val args: DetailFragmentArgs by navArgs()
     private lateinit var detailViewPagerAdapter: DetailViewPagerAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_detail, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -117,15 +108,7 @@ class DetailFragment : Fragment() {
             fragment_detail_like_count_text.text = likeCount
             fragment_detail_time_count_text.text = cookingTime
 
-            if (it.dishImageUrl.isNotBlank()) {
-                Glide.with(requireContext())
-                    .load(it.dishImageUrl)
-                    .into(fragment_detail_dish_image)
-            } else {
-                Glide.with(requireContext())
-                    .load(R.drawable.background_placeholder)
-                    .into(fragment_detail_dish_image)
-            }
+            context?.loadImage(it.dishImageUrl, fragment_detail_dish_image)
 
             handleDietAppearance(it.isGlutenFree, it.isDairyFree, it.isVegetarian)
         }
@@ -133,15 +116,9 @@ class DetailFragment : Fragment() {
 
     private fun handleLocalData(favoriteStatus: Boolean?) {
         favoriteStatus?.let { isFavorite ->
-            if (isFavorite) {
-                Glide.with(requireContext())
-                    .load(R.drawable.ic_heart_filled)
-                    .into(fragment_detail_favorite_image)
-            } else {
-                Glide.with(requireContext())
-                    .load(R.drawable.ic_heart_lineal)
-                    .into(fragment_detail_favorite_image)
-            }
+            Glide.with(requireContext())
+                .load(if (isFavorite) R.drawable.ic_heart_filled else R.drawable.ic_heart_lineal)
+                .into(fragment_detail_favorite_image)
         }
     }
 
@@ -150,23 +127,9 @@ class DetailFragment : Fragment() {
         isDairyFree: Boolean,
         isVegetarian: Boolean
     ) {
-        if (isGlutenFree) {
-            fragment_detail_gluten_text.text = "Gluten\nFree"
-        } else {
-            fragment_detail_gluten_text.text = "Contain\nGluten"
-        }
-
-        if (isDairyFree) {
-            fragment_detail_dairy_text.text = "Dairy\nFree"
-        } else {
-            fragment_detail_dairy_text.text = "Contain\nDairy"
-        }
-
-        if (isVegetarian) {
-            fragment_detail_vegan_text.text = "Safe For\nVegan"
-        } else {
-            fragment_detail_vegan_text.text = "Not Safe\nFor Vegan"
-        }
+        fragment_detail_gluten_text.text = if (isGlutenFree) "Gluten\nFree" else "Contain\nGluten"
+        fragment_detail_dairy_text.text = if (isDairyFree) "Dairy\nFree" else "Contain\nDairy"
+        fragment_detail_vegan_text.text = if (isVegetarian) "Safe For\nVegan" else "Not Safe\nFor Vegan"
     }
 
     private fun adjustViewPagerFragmentHeight(view: View?) {
