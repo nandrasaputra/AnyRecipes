@@ -5,8 +5,8 @@
     <string name="title_fridge">Fridge</string>
     <string name="title_account">Account</string>
     <string name="title_favoritefeature">Favorite Feature</string>
-    <string name="fragment_account_name_text">Nandra Saputra</string>
-    <string name="fragment_account_email_text">nandra.saputras@gmail.com</string>
+    <string name="fragment_account_name_text">Gumball Waterson</string>
+    <string name="fragment_account_email_text">gumball@waterson.com</string>
     <string name="fragment_account_credit_title_text">Credits:</string>
     <string name="fragment_account_credit_spoonacular_text">All recipe data from this app is belong to Spoonacular API</string>
     <string name="fragment_account_toolbar_title_text">Account</string>
